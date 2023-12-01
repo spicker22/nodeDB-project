@@ -1,10 +1,10 @@
 import React from 'react'
-
+import './DoctorCard.css';
 
 // Import multiple child components.
 import DoctorsName from './DoctorsName.jsx';
-import years from './years.jsx';
-import address from './address.jsx';
+import Years from './years.jsx';
+import Address from './address.jsx';
 import ModeButton from './ModeButton.jsx';
 import { useState } from 'react';
 import axios from 'axios'
@@ -13,21 +13,13 @@ import axios from 'axios'
 // Create the 
 const DoctorCard = (props) => {
  
- 
-
-
-
     // ?? Can we delete 'currentData'? It seems we are not using it so I suspect we can  ??
      // Destructing the properties from initialDoctorData and others
      const {initialDoctorData, initialEditMode, deleteCard, currentData, setCurrentData} = props
  
- 
-
-
-
     // 'useState' establishing the variable 'editMode' and function to change that state
     const [editMode, setIsEditing] = useState(initialEditMode)
-    const [DoctorsName, setDoctorsName] = useState(initialDoctorData.DoctorsName)
+    const [doctorsName, setDoctorsName] = useState(initialDoctorData.DoctorsName)
     const [years, setYears] = useState(initialDoctorData.years)
     const [address, setAddress] = useState(initialDoctorData.address)
 
@@ -35,12 +27,10 @@ const DoctorCard = (props) => {
     const changeNormalMode = () => {
         
         const bodyObj = {
-            DoctorsName: DoctorsName,
+            DoctorsName: doctorsName,
             years: years,
             address: address
         }
-
-
 
         /// Doing a put request to that parameter, then pass in a body object (bodyObj)
         axios.put(`/doctor/${initialDoctorData.id}` , bodyObj)                
@@ -52,55 +42,47 @@ const DoctorCard = (props) => {
         .catch((theseHands) => {
             console.log(theseHands);
         })
-
     }
 
 
 
 
-
-
-
-
-
-
-
-
-    // ?? Need to research this ??
- 
     return (
+        <div className = "card">
 
-        <>
-    <div>DoctorCard</div>
+            <div>
+            <DoctorsName 
+                isEditing={editMode} 
+                value={doctorsName} 
+                setDoctorsName={setDoctorsName}
+                />
+            </div>
 
-        {/* <tr>
-        <ModeButton 
-            isEditing={editMode} 
-            changeEditMode={changeEditMode}
-            changeNormalMode={changeNormalMode}
-            deleteCard={deleteCard}
-            /> */}
+            <div>
+            <Years 
+                isEditing={editMode} 
+                value={years}
+                setYears = {setYears}
+                />
+            </div>
 
-        <DoctorsName 
-            isEditing={editMode} 
-            value={DoctorsName} 
-            setDoctorsName={setDoctorsName}
-            />
+            <div>
+            <Address 
+                isEditing={editMode} 
+                value={address}
+                setAddress = {setAddress}
+                />
+            </div>
 
-        {/* <years 
-            isEditing={editMode} 
-            value={years}
-            setYears = {setYears}
-            />
 
-        <Hours 
-            isEditing={editMode} 
-            value={address}
-            setAddress = {setAddress}
-            />
-        </tr> */}
-
-        </>
+            <ModeButton 
+                isEditing={editMode} 
+                changeEditMode={changeEditMode}
+                changeNormalMode={changeNormalMode}
+                deleteCard={deleteCard}
+                />
+    
+        </div>
 
     )
 }

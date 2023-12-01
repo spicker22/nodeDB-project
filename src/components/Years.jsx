@@ -2,9 +2,6 @@ import React from 'react'
 
 const Years = (props) => {
 
-
-
-
   // Need to show whether or not we are in edit mode
   // Destruct so can use the properties as variables  
   const {isEditing, value, setYears} = props
@@ -13,7 +10,6 @@ const Years = (props) => {
   return isEditing ? (
 
     // The if statement
-    // Returns the value
     <td>
         $<input 
         type = "text" 
@@ -28,12 +24,6 @@ const Years = (props) => {
     {value}
    </td>
   )
-
-
-
-
-
- 
 }
 
 export default Years

@@ -9,6 +9,8 @@ const Address = (props) => {
   
   // Turny statement is the short hand version of the if/else statement. ':' is else statement
   return isEditing ? (
+
+    // The if statement
     <td>
         <input 
         type = "text" 
@@ -18,11 +20,11 @@ const Address = (props) => {
         />
     </td>
   ) : (
+    // The else statement. 
    <td>
     {value}
    </td>
   )
-
 }
 
 export default Address

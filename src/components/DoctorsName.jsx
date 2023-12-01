@@ -11,6 +11,8 @@ const DoctorsName = (props) => {
   // ? is the end of the condition
   // : is the else statement
   return isEditing ? (
+
+    // The if statement
     <td>
         <input 
         type = "text" 
@@ -25,9 +27,6 @@ const DoctorsName = (props) => {
     {value}
    </td>
   )
-
-
-
 }
 
 export default DoctorsName

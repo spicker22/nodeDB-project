@@ -88,7 +88,7 @@ const LandingPage = (props) => {
 // ?? Research this ?? 
   return (
     <>
-    <div>LandingPage</div>
+    <div>Doctors Offices</div>
 
     {/* The 'rows' is taken from above. Here it is just being populated in the HTML */} 
 
@@ -98,8 +98,6 @@ const LandingPage = (props) => {
     {/* This 'AddButton' is a react component. It has a property 'addRow'
     That addRow is executed when the button is clicked as defined in 
     the 'AddButton.jsx' component */}
-
-
     <AddButton addCard={addCard}/> 
 
     </>
